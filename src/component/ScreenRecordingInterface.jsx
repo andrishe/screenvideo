@@ -6,6 +6,11 @@ export const ScreenRecordingInterface = () => {
     <ReactMediaRecorder
       screen
       mimeType="video/webm"
+      timeSlice={120 * 60 * 1000} // 120 minutes
+      onStop={(blobUrl, blob) => {
+        console.log("Recording stopped. Blob URL:", blobUrl);
+        // Sauvegarde ou traitement du blob ici
+      }}
       render={({ status, startRecording, stopRecording, mediaBlobUrl }) => (
         <div className="w-full rounded-lg overflow-hidden shadow-lg m-auto p-8 mt-10 border-2 border-rose-200">
           <p className="text-center text-2xl text-rose-800">
